@@ -154,7 +154,7 @@ To enable communication between the actors and providers, we need to [link them]
 
 Run the script below to create the links:
 
-```console
+```sh
 export CONCORDANCE_PROVIDER_ID=VAW26CNCVKOTLIJVX2H4WD5T36NKBGWS2GVOIOKAAOOFIJDOJBRFMQZX
 export KVREDIS_PROVIDER_ID=VAZVC4RX54J2NVCMCW7BPCAHGGG5XZXDBXFUMDUXGESTMQEJLC3YVZWB
 
@@ -226,7 +226,7 @@ $ nats stream list
 
 Here we can observe that the NATS streams that will carry our event sourcing traffic have been created successfully.
 
-> *NOTE* At this point if you wanted to *reset* their contents, you could do so with the following commands:
+> ⚠️NOTE: At this point if you wanted to *reset* their contents, you could do so with the following commands:
 >
 > ```console
 > nats stream purge CC_EVENTS -f
@@ -235,13 +235,13 @@ Here we can observe that the NATS streams that will carry our event sourcing tra
 
 To set the system in motion, from the `examples/bankaccount` directory (where this README is), we can execute a simple scenario:
 
-**First, we create an account `ABC123` with an intiial balance of 4000 cents (used to avoid floating point friction), the event sourcing way (by creating a command):**
+**First, we create an account `ABC123` with an initial balance of 4000 cents (used to avoid floating point friction), the event sourcing way (by creating a command):**
 
 ```console
 nats req cc.commands.bankaccount "`cat ./scripts/create_account_cmd.json | jq -c`"
 ```
 
-> **NOTE** If this command is successful, you should see output like:
+> ⚠️NOTE: If this command is successful, you should see output like:
 >
 > ```
 > 03:31:42 Sending request on "cc.commands.bankaccount"
